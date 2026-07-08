@@ -568,6 +568,31 @@
     font-size: 1.2rem;
   }
 }
+/* Estilos para links do Apêndice */
+#apendice a {
+  transition: color 0.2s ease;
+}
+
+#apendice a:hover {
+  color: #8b6f4f;
+  text-decoration: underline !important;
+}
+
+/* Modo escuro - links do Apêndice */
+.dark-mode #apendice a:hover {
+  color: #e8c9a0;
+}
+
+/* Corrigir a cor do placeholder da busca no modo escuro */
+.dark-mode #searchInput::placeholder {
+  color: #8a7a68;
+}
+
+/* Botão de tema no topo - modo escuro */
+.dark-mode #toggleTheme {
+  background: #a88d70;
+  color: #1e1a16;
+}
   </style>
 </head>
 <body>
@@ -2251,18 +2276,42 @@
 </button>
 
 <script>
-  // ===== TEMA CLARO/ESCURO =====
+  // ===== TEMA CLARO/ESCURO COM PERSISTÊNCIA =====
   const toggleBtn = document.getElementById('toggleTheme');
   const body = document.body;
 
-  toggleBtn.addEventListener('click', function() {
-    body.classList.toggle('dark-mode');
-    if (body.classList.contains('dark-mode')) {
-      this.textContent = '☀️';
+  // Função para aplicar o tema
+  function applyTheme(isDark) {
+    if (isDark) {
+      body.classList.add('dark-mode');
+      toggleBtn.textContent = '☀️';
     } else {
-      this.textContent = '🌙';
+      body.classList.remove('dark-mode');
+      toggleBtn.textContent = '🌙';
     }
+    localStorage.setItem('catecismo-dark-mode', isDark ? 'true' : 'false');
+  }
+
+  // Carregar o tema salvo ao iniciar
+  function loadTheme() {
+    const saved = localStorage.getItem('catecismo-dark-mode');
+    // Se não houver preferência salva, usar o modo claro por padrão
+    if (saved === null) {
+      applyTheme(false);
+      return;
+    }
+    const isDark = saved === 'true';
+    applyTheme(isDark);
+  }
+
+  // Alternar o tema ao clicar no botão
+  toggleBtn.addEventListener('click', function() {
+    const isDark = body.classList.contains('dark-mode');
+    applyTheme(!isDark);
   });
+
+  // Carregar o tema quando a página carregar
+  loadTheme();
 
 // ===== SISTEMA DE PESQUISA =====
 const searchInput = document.getElementById('searchInput');
