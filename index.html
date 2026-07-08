@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="ico" href="https://irmadel.github.io/catecismomaiordesaopiox/favicon.ico">
+  <link rel="icon" type="ico" href="https://irmadel.github.io/catecismomaiordesaopiox/favicon.ico.png">
   <title>Catecismo Maior de São Pio X – Edição Integral</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -323,6 +323,164 @@
     padding: 0.6rem 0.6rem;
   }
 }
+/* ===== ESTILOS PARA A INTRODUÇÃO ===== */
+.prayer-card {
+  background: #f7f1e9;
+  border-radius: 8px;
+  margin: 1.2rem 0;
+  overflow: hidden;
+  border: 1px solid #d6cbbc;
+}
+
+.prayer-title {
+  background: #b9a68c;
+  color: #1e1a16;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 0.6rem 1.2rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.prayer-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+}
+
+.prayer-latin {
+  border-right: 1px solid #d6cbbc;
+  padding-right: 1rem;
+}
+
+.prayer-latin p,
+.prayer-portuguese p {
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.prayer-latin {
+  font-style: italic;
+  color: #3d2e1e;
+}
+
+.prayer-portuguese {
+  color: #1e1a16;
+}
+
+.prayer-content {
+  padding: 0.8rem 1.2rem;
+}
+
+.prayer-content p {
+  margin-bottom: 0.3rem;
+}
+
+.prayer-content .response {
+  color: #5f4a34;
+  font-style: italic;
+}
+
+.prayer-content .v {
+  color: #3d2e1e;
+  font-weight: 600;
+}
+
+.prayer-content .r {
+  color: #5f4a34;
+  font-weight: 600;
+}
+
+/* Modo escuro para a introdução */
+.dark-mode .prayer-card {
+  background: #2f2821;
+  border-color: #4a3d32;
+}
+
+.dark-mode .prayer-title {
+  background: #5a4c3e;
+  color: #e8dfd6;
+}
+
+.dark-mode .prayer-latin {
+  color: #c4b7a6;
+  border-right-color: #4a3d32;
+}
+
+.dark-mode .prayer-portuguese {
+  color: #d4c9bb;
+}
+
+.dark-mode .prayer-content p {
+  color: #d4c9bb;
+}
+
+.dark-mode .prayer-content .response {
+  color: #b8a48a;
+}
+
+.dark-mode .prayer-content .v {
+  color: #e0d3c2;
+}
+
+.dark-mode .prayer-content .r {
+  color: #b8a48a;
+}
+
+.dark-mode .prayer-latin[style*="font-style: italic"] {
+  color: #8a7a68;
+}
+
+/* Responsivo para celular */
+@media (max-width: 768px) {
+  .prayer-title {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .prayer-columns {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 0.8rem;
+  }
+  
+  .prayer-latin {
+    border-right: none;
+    border-bottom: 1px solid #d6cbbc;
+    padding-right: 0;
+    padding-bottom: 0.5rem;
+  }
+  
+  .dark-mode .prayer-latin {
+    border-bottom-color: #4a3d32;
+  }
+  
+  .prayer-content {
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .prayer-latin p,
+  .prayer-portuguese p {
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .prayer-title {
+    font-size: 0.85rem;
+  }
+  
+  .prayer-columns {
+    padding: 0.5rem;
+  }
+  
+  .prayer-latin p,
+  .prayer-portuguese p {
+    font-size: 0.82rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -366,30 +524,131 @@
 <!-- ============================================================== -->
 <!-- INTRODUÇÃO – Orações e fórmulas iniciais (páginas 9–15)        -->
 <section id="intro">
-<h2>Introdução</h2>
-<div class="prayer">
-<p><strong>Persignar-se</strong><br>
-Pelo sinal † da santa cruz, livrai-nos, Deus † nosso Senhor, dos nossos † inimigos. Em nome do Pai, † e do Filho † e do Espírito Santo. † Amém.</p>
-<p><strong>Credo</strong><br>
-Creio em Deus Padre, todo-poderoso, Criador do céu e da terra. E em Jesus Cristo, um só seu Filho, nosso Senhor, o qual foi concebido do Espírito Santo, nasceu de Maria Virgem; padeceu sob o poder de Pôncio Pilatos, foi crucificado, morto e sepultado; desceu aos infernos; ao terceiro dia ressurgiu dos mortos; subiu aos céus, está sentado à mão direita de Deus Padre todo-poderoso, donde há de vir a julgar os vivos e os mortos; creio no Espírito Santo; na santa Igreja Católica; na comunhão dos santos; na remissão dos pecados; na ressurreição da carne; na vida eterna. Amém.</p>
-<p><strong>Padre nosso</strong><br>
-Padre nosso, que estais nos céus, santificado seja o vosso nome; venha a nós o vosso reino; seja feita a vossa vontade, assim na terra como no céu; o pão nosso de cada dia nos dai hoje; e perdoai-nos as nossas dívidas, assim como nós perdoamos aos nossos devedores; e não nos deixeis cair em tentação; R/. Mas livrai-nos do mal. Amém.</p>
-<p><strong>Ave Maria</strong><br>
-Ave, Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus. R/. Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora da nossa morte. Amém.</p>
-<p><strong>Salve Rainha</strong><br>
-Salve, Rainha, Mãe de misericórdia, vida, doçura e esperança nossa, salve! A vós bradamos, os degredados filhos de Eva; a vós suspiramos, gemendo e chorando neste vale de lágrimas. Eia, pois advogada nossa, esses vossos olhos misericordiosos a nós volvei; e depois deste desterro nos mostrai Jesus, bendito fruto do vosso ventre, ó clemente, ó piedosa, ó doce sempre Virgem Maria. V/. Rogai por nós, santa Mãe de Deus, R/. Para que sejamos dignos das promessas de Cristo.</p>
-<p><strong>Glória</strong><br>
-V/. Glória ao Pai, ao Filho e ao Espírito Santo. R/. Assim como era no princípio, agora e sempre, por todos os séculos dos séculos. Amém.</p>
-<p><strong>Ato de Contrição</strong><br>
-Meu Senhor Jesus Cristo, Deus e homem verdadeiro, Criador, Pai e Redentor meu, por ser vós quem sois e porque vos amo sobre todas as coisas, pesa-me de todo o meu coração de vos ter ofendido, proponho firmemente a emenda de minha vida para nunca mais pecar, apartar-me de todas ocasiões de ofender-vos, confessar-me e cumprir a penitência que me foi imposta. Vos ofereço, Senhor minha vida, obras, e trabalhos em satisfação de todos os meus pecados e assim como vos suplico, assim confio em vossa bondade e misericórdia infinitas que me perdoareis pelos méritos de vosso preciosíssimo sangue, paixão e morte e me dareis graça para emendar-me e perseverar em vosso santo serviço até o fim de minha vida. Amém.</p>
-</div>
-<h3>Mandamentos da Lei de Deus</h3>
-<p>1) Amar a Deus sobre todas as coisas. 2) Não tomar seu santo nome em vão. 3) Guardar os domingos e festas. 4) Honrar pai e mãe. 5) Não matar. 6) Não pecar contra a castidade. 7) Não furtar. 8) Não levantar falso testemunho. 9) Não desejar a mulher do próximo. 10) Não cobiçar as coisas alheias.</p>
-<h3>Mandamentos da Igreja</h3>
-<p>1) Ouvir Missa inteira nos domingos e festas de guarda. 2) Confessar-se ao menos uma vez cada ano. 3) Comungar ao menos pela Páscoa da Ressurreição. 4) Jejuar e abster-se de carne, quando manda a santa madre Igreja. 5) Pagar dízimos, segundo o costume.</p>
-<h3>Sacramentos</h3>
-<p>1) Batismo. 2) Confirmação. 3) Eucaristia. 4) Penitência ou Confissão. 5) Extrema Unção. 6) Ordem. 7) Matrimônio.</p>
-<hr>
+  <h2>Introdução</h2>
+
+  <!-- Persignar-se -->
+  <div class="prayer-card">
+    <div class="prayer-title">✠ Persignar-se</div>
+    <div class="prayer-columns">
+      <div class="prayer-latin">
+        <p>Per signum † crucis, de † inimicis nostris libera-nos Deus † noster. In nomine Patris † et Filii † et Spiritus Sancti. † Amen.</p>
+      </div>
+      <div class="prayer-portuguese">
+        <p>Pelo sinal † da santa cruz, livrai-nos, Deus † nosso Senhor, dos nossos † inimigos. Em nome do Pai, † e do Filho † e do Espírito Santo. † Amém.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Credo -->
+  <div class="prayer-card">
+    <div class="prayer-title">✠ Credo</div>
+    <div class="prayer-columns">
+      <div class="prayer-latin">
+        <p>Credo in Deum, Patrem omnipoténtem, Creatórem caeli et terrae. Et in Jesum Christum, Filium eius únicum, Dóminum nostrum: qui concéptus est de Spíritu Sancto, natus ex María Virgine, passus sub Pontio Piláto, crucifixus, mórtuus, et sepúltus: descendít ad ínferos; tértia die resurréxit a mórtuis; ascendít ad caelos; sedet ad déxteram Dei Patris omnipoténtis: inde ventúrus est judicare vivos et mórtuos. Credo in Spiritum Sanctum, sanctam Ecclésiam cathólicam, Sanctórum communionem, remissiónem peccatórum, carnis resurrectiónem, vitam aetérnam. Amen.</p>
+      </div>
+      <div class="prayer-portuguese">
+        <p>Creio em Deus Padre, todo-poderoso, Criador do céu e da terra. E em Jesus Cristo, um só seu Filho, nosso Senhor, o qual foi concebido do Espírito Santo, nasceu de Maria Virgem; padeceu sob o poder de Pôncio Pilatos, foi crucificado, morto e sepultado; desceu aos infernos; ao terceiro dia ressurgiu dos mortos; subiu aos céus, está sentado à mão direita de Deus Padre todo-poderoso, donde há de vir a julgar os vivos e os mortos; creio no Espírito Santo; na santa Igreja Católica; na comunhão dos santos; na remissão dos pecados; na ressurreição da carne; na vida eterna. Amém.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Padre nosso -->
+  <div class="prayer-card">
+    <div class="prayer-title">✠ Pater Noster / Padre Nosso</div>
+    <div class="prayer-columns">
+      <div class="prayer-latin">
+        <p>Pater noster, qui es in caelis, sanctificétur nomen tuum. Advéniat regnum tuum. Fiat voluntas tua, sicut in caelo et in terra. Panem nostrum quotidiánum da nobis hódie. Et dimítte nobis débita nostra, sicut et nos dimíttimus debitóribus nostris. Et ne nos indúcas in tentatiónem. <span class="response">R/. Sed líbera nos a malo.</span> Amen.</p>
+      </div>
+      <div class="prayer-portuguese">
+        <p>Padre nosso, que estais nos céus, santificado seja o vosso nome; venha a nós o vosso reino; seja feita a vossa vontade, assim na terra como no céu; o pão nosso de cada dia nos dai hoje; e perdoai-nos as nossas dívidas, assim como nós perdoamos aos nossos devedores; e não nos deixeis cair em tentação; <span class="response">R/. Mas livrai-nos do mal.</span> Amém.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ave Maria -->
+  <div class="prayer-card">
+    <div class="prayer-title">✠ Ave Maria</div>
+    <div class="prayer-columns">
+      <div class="prayer-latin">
+        <p>Ave, María, grátia plena: Dóminus tecum. Benedícta tu in muliéribus, et benedíctus fructus ventris tui, Jesus. <span class="response">R/. Sancta María, Mater Dei, ora pro nobis peccatóribus, nunc et in hora mortis nostrae.</span> Amen.</p>
+      </div>
+      <div class="prayer-portuguese">
+        <p>Ave, Maria, cheia de graça, o Senhor é convosco; bendita sois vós entre as mulheres, e bendito é o fruto do vosso ventre, Jesus. <span class="response">R/. Santa Maria, Mãe de Deus, rogai por nós, pecadores, agora e na hora da nossa morte.</span> Amém.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Salve Rainha -->
+  <div class="prayer-card">
+    <div class="prayer-title">✠ Salve Regina / Salve Rainha</div>
+    <div class="prayer-columns">
+      <div class="prayer-latin">
+        <p>Salve, Regina, Mater misericórdiae, vita, dulcédo et spes nostra, salve. Ad te clamámus, éxsules filii Evae. Ad te suspirámus geméntes et flentes in hac lacrimárum valle. Eia ergo, advocáta nostra, illos tuos misericórdes óculos ad nos convérte. Et Jesum benedíctum fructum ventris tui, nobis post hoc exsílium, osténde. O clemens, o pia, o dulcis Virgo María!</p>
+        <p><span class="v">V/. Ora pro nobis, sancta Dei Génitrix.</span> <span class="r">R/. Ut digni efficiámur promissiónibus Christi.</span></p>
+      </div>
+      <div class="prayer-portuguese">
+        <p>Salve, Rainha, Mãe de misericórdia, vida, doçura e esperança nossa, salve! A vós bradamos, os degredados filhos de Eva; a vós suspiramos, gemendo e chorando neste vale de lágrimas. Eia, pois advogada nossa, esses vossos olhos misericordiosos a nós volvei; e depois deste desterro nos mostrai Jesus, bendito fruto do vosso ventre, ó clemente, ó piedosa, ó doce sempre Virgem Maria!</p>
+        <p><span class="v">V/. Rogai por nós, santa Mãe de Deus,</span> <span class="r">R/. Para que sejamos dignos das promessas de Cristo.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Glória -->
+  <div class="prayer-card">
+    <div class="prayer-title">✠ Glória Patri / Glória</div>
+    <div class="prayer-columns">
+      <div class="prayer-latin">
+        <p><span class="v">V/. Glória Patri, et Fílio, et Spíritui Sancto.</span> <span class="r">R/. Sicut erat in princípio, et nunc, et semper, et in saécula saeculórum.</span> Amen.</p>
+      </div>
+      <div class="prayer-portuguese">
+        <p><span class="v">V/. Glória ao Pai, ao Filho e ao Espírito Santo.</span> <span class="r">R/. Assim como era no princípio, agora e sempre, por todos os séculos dos séculos.</span> Amém.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ato de Contrição -->
+  <div class="prayer-card">
+    <div class="prayer-title">✠ Ato de Contrição</div>
+    <div class="prayer-columns">
+      <div class="prayer-latin" style="font-style: italic; color: #5f4a34;">
+        <p><em>(Não há versão latina tradicional fixa para o Ato de Contrição; esta oração é comumente rezada em língua vernácula.)</em></p>
+      </div>
+      <div class="prayer-portuguese">
+        <p>Meu Senhor Jesus Cristo, Deus e homem verdadeiro, Criador, Pai e Redentor meu, por ser vós quem sois e porque vos amo sobre todas as coisas, pesa-me de todo o meu coração de vos ter ofendido, proponho firmemente a emenda de minha vida para nunca mais pecar, apartar-me de todas ocasiões de ofender-vos, confessar-me e cumprir a penitência que me foi imposta. Vos ofereço, Senhor minha vida, obras, e trabalhos em satisfação de todos os meus pecados e assim como vos suplico, assim confio em vossa bondade e misericórdia infinitas que me perdoareis pelos méritos de vosso preciosíssimo sangue, paixão e morte e me dareis graça para emendar-me e perseverar em vosso santo serviço até o fim de minha vida. Amém.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Mandamentos da Lei de Deus -->
+  <h3>Mandamentos da Lei de Deus</h3>
+  <div class="prayer-card">
+    <div class="prayer-title">Os Dez Mandamentos</div>
+    <div class="prayer-content">
+      <p><strong>1)</strong> Amar a Deus sobre todas as coisas. <strong>2)</strong> Não tomar seu santo nome em vão. <strong>3)</strong> Guardar os domingos e festas. <strong>4)</strong> Honrar pai e mãe. <strong>5)</strong> Não matar. <strong>6)</strong> Não pecar contra a castidade. <strong>7)</strong> Não furtar. <strong>8)</strong> Não levantar falso testemunho. <strong>9)</strong> Não desejar a mulher do próximo. <strong>10)</strong> Não cobiçar as coisas alheias.</p>
+    </div>
+  </div>
+
+  <!-- Mandamentos da Igreja -->
+  <h3>Mandamentos da Igreja</h3>
+  <div class="prayer-card">
+    <div class="prayer-title">Os Cinco Preceitos</div>
+    <div class="prayer-content">
+      <p><strong>1)</strong> Ouvir Missa inteira nos domingos e festas de guarda. <strong>2)</strong> Confessar-se ao menos uma vez cada ano. <strong>3)</strong> Comungar ao menos pela Páscoa da Ressurreição. <strong>4)</strong> Jejuar e abster-se de carne, quando manda a santa madre Igreja. <strong>5)</strong> Pagar dízimos, segundo o costume.</p>
+    </div>
+  </div>
+
+  <!-- Sacramentos -->
+  <h3>Sacramentos</h3>
+  <div class="prayer-card">
+    <div class="prayer-title">Os Sete Sacramentos</div>
+    <div class="prayer-content">
+      <p><strong>1)</strong> Batismo. <strong>2)</strong> Confirmação. <strong>3)</strong> Eucaristia. <strong>4)</strong> Penitência ou Confissão. <strong>5)</strong> Extrema Unção. <strong>6)</strong> Ordem. <strong>7)</strong> Matrimônio.</p>
+    </div>
+  </div>
+
+  <hr>
 </section>
 
 <!-- ============================================================== -->
