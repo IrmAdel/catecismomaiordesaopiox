@@ -485,24 +485,123 @@
     font-size: 0.82rem;
   }
 }
+.search-hidden { display: none !important; }
+.search-highlight { background: #f0d6a8; padding: 0 2px; border-radius: 2px; }
+.dark-mode .search-highlight { background: #6b5d4e; color: #e8dfd6; }
+#noResults { text-align: center; padding: 2rem; font-style: italic; color: #5f4a34; display: none; }
+.dark-mode #noResults { color: #b8a48a; }
+.dark-mode #searchInput { background: #332b23; border-color: #a88d70; color: #d4c9bb; }
+.dark-mode #searchInput::placeholder { color: #8a7a68; }
+.dark-mode #searchInput:focus { border-color: #e8c9a0; }
+
+/* Botão Voltar ao Topo */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #b9a68c;
+  color: #1e1a16;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1;
+  padding: 0;
+}
+
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#backToTop:hover {
+  background: #a88d70;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+#backToTop:active {
+  transform: scale(0.92);
+}
+
+/* Modo escuro */
+.dark-mode #backToTop {
+  background: #5a4c3e;
+  color: #e8dfd6;
+  border-color: #a88d70;
+}
+
+.dark-mode #backToTop:hover {
+  background: #6b5d4e;
+}
+
+/* Responsivo para celular */
+@media (max-width: 768px) {
+  #backToTop {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  #backToTop {
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
   </style>
 </head>
 <body>
 <div class="book" id="book">
 
-<div style="display: flex; justify-content: flex-end; margin-bottom: 0.5rem;">
-  <button id="toggleTheme" style="
-    background: #b9a68c;
-    border: none;
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #1e1a16;
-    cursor: pointer;
-    transition: 0.2s;
-    font-family: inherit;
-  ">🌙</button>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; gap: 0.5rem;">
+  <div>
+    <button id="toggleTheme" style="
+      background: #b9a68c;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1e1a16;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: inherit;
+    ">🌙</button>
+  </div>
+  <div style="flex: 1; min-width: 200px; max-width: 400px;">
+    <input type="text" id="searchInput" placeholder="Buscar no Catecismo..." style="
+      width: 100%;
+      padding: 0.5rem 0.8rem;
+      border: 2px solid #b9a68c;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #fcf9f5;
+      color: #1e1a16;
+      outline: none;
+      transition: 0.2s;
+    ">
+  </div>
 </div>
 
 <!-- TÍTULO -->
@@ -532,14 +631,14 @@
 <div class="toc">
   <div><a href="#intro">Introdução · Orações</a></div>
   <div><a href="#licao">Lição Preliminar</a></div>
-  <div><a href="#parte1">I. Credo</a></div>
+  <div><a href="#parte1">I. Credo (art. 1–12)</a></div>
   <div><a href="#parte2">II. Oração</a></div>
   <div><a href="#parte3">III. Mandamentos</a></div>
   <div><a href="#parte4">IV. Sacramentos</a></div>
   <div><a href="#parte5">V. Virtudes, pecados, novíssimos</a></div>
   <div><a href="#festas">Festas do Senhor, Virgem e Santos</a></div>
   <div><a href="#historia">Breve História da Religião</a></div>
-  <div><a href="#apendice">Apêndice · Missa</a></div>
+  <div><a href="#apendice">Apêndice · Missa · Orações</a></div>
 </div>
 
 <!-- ============================================================== -->
@@ -2085,37 +2184,74 @@
 <!-- APÊNDICE – BULA, MOTU PROPRIO, ORDINÁRIO DA MISSA, ORAÇÕES  -->
 <section id="apendice">
 <h2>Apêndice</h2>
+
 <div class="chapter">
-<h3>Bula “Quo Primum Tempore” – Papa São Pio V (14.07.1570)</h3>
-<p>Estabelece o Missal Romano como perpétuo, obrigatório em todas as igrejas, exceto aquelas com uso ininterrupto superior a 200 anos. Proíbe quaisquer acréscimos ou alterações.</p>
+  <h3><a href="quoprimumtempore.html" style="text-decoration: none; color: inherit;">Bula “Quo Primum Tempore” – Papa São Pio V (14.07.1570)</a></h3>
+  <p>Estabelece o Missal Romano como perpétuo, obrigatório em todas as igrejas, exceto aquelas com uso ininterrupto superior a 200 anos. Proíbe quaisquer acréscimos ou alterações.</p>
 </div>
+
 <div class="chapter">
-<h3>Motu Proprio “Summorum Pontificum” – Bento XVI (07.07.2007)</h3>
-<p>Reconhece o Missal de 1962 (Beato João XXIII) como forma extraordinária do rito romano, nunca ab-rogado. Permite seu uso nas celebrações sem povo, e em condições específicas nas paróquias, a critério do pároco e do Bispo.</p>
+  <h3><a href="summonrumpontificum.html" style="text-decoration: none; color: inherit;">Motu Proprio “Summorum Pontificum” – Bento XVI (07.07.2007)</a></h3>
+  <p>Reconhece o Missal de 1962 (Beato João XXIII) como forma extraordinária do rito romano, nunca ab-rogado. Permite seu uso nas celebrações sem povo, e em condições específicas nas paróquias, a critério do pároco e do Bispo.</p>
 </div>
+
 <div class="chapter">
-<h3>Ordinário da Missa (Ordo Missae)</h3>
-<p>Inclui as partes fixas da Missa Tridentina em latim e português: Introíbo ad altáre Dei, Confiteor, Kyrie, Glória, Credo, Ofertório, Cânon (com as palavras da Consagração), Pater Noster, Agnus Dei, Comunhão, e a Bênção final. As rubricas indicam as posturas (de joelhos, de pé) e as orações do sacerdote e do ministro.</p>
+  <h3><a href="ordomissae.html" style="text-decoration: none; color: inherit;">Ordinário da Missa (Ordo Missae)</a></h3>
+  <p>Inclui as partes fixas da Missa Tridentina em latim e português: Introíbo ad altáre Dei, Confiteor, Kyrie, Glória, Credo, Ofertório, Cânon (com as palavras da Consagração), Pater Noster, Agnus Dei, Comunhão, e a Bênção final. As rubricas indicam as posturas (de joelhos, de pé) e as orações do sacerdote e do ministro.</p>
 </div>
+
 <div class="chapter">
-<h3>Orações selecionadas</h3>
-<ul>
-  <li><strong>Angelus</strong> – O Anjo do Senhor anunciou a Maria… (com três Ave-Marias).</li>
-  <li><strong>Regina Cæli</strong> – Rainha dos céus, alegrai-vos, aleluia! (usado no Tempo Pascal).</li>
-  <li><strong>Ladainha de Nossa Senhora</strong> – Santa Maria, rogai por nós… (com invocações e respostas).</li>
-  <li><strong>Ladainha de São José</strong> – São José, ilustre Filho de Davi…</li>
-  <li><strong>Oração da Manhã (Prima)</strong> – com hino, capítulo, responsório, oração e bênção.</li>
-  <li><strong>Oração da Noite (Completas)</strong> – com exame de consciência, Confiteor, Nunc dimittis, hino, oração e Salve Rainha.</li>
-  <li><strong>Orações para a Confissão</strong> – exame de consciência detalhado, ato de contrição, Salmo 50 (Miserere).</li>
-  <li><strong>Como rezar o Terço e o Rosário</strong> – método completo com os mistérios gozosos, dolorosos e gloriosos, ladainha final e orações.</li>
-</ul>
+  <h4><a href="angelus.html" style="text-decoration: none; color: inherit;">Angelus</a></h4>
+  <p>O Anjo do Senhor anunciou a Maria… (com três Ave-Marias).</p>
 </div>
+
+<div class="chapter">
+  <h4><a href="regina-caeli.html" style="text-decoration: none; color: inherit;">Regina Cæli</a></h4>
+  <p>Rainha dos céus, alegrai-vos, aleluia! (usado no Tempo Pascal).</p>
+</div>
+
+<div class="chapter">
+  <h4><a href="ladainha-nossa-senhora.html" style="text-decoration: none; color: inherit;">Ladainha de Nossa Senhora</a></h4>
+  <p>Santa Maria, rogai por nós… (com invocações e respostas).</p>
+</div>
+
+<div class="chapter">
+  <h4><a href="ladainha-sao-jose.html" style="text-decoration: none; color: inherit;">Ladainha de São José</a></h4>
+  <p>São José, ilustre Filho de Davi…</p>
+</div>
+
+<div class="chapter">
+  <h4><a href="oracao-manha.html" style="text-decoration: none; color: inherit;">Oração da Manhã (Prima)</a></h4>
+  <p>Com hino, capítulo, responsório, oração e bênção.</p>
+</div>
+
+<div class="chapter">
+  <h4><a href="oracao-noite.html" style="text-decoration: none; color: inherit;">Oração da Noite (Completas)</a></h4>
+  <p>Com exame de consciência, Confiteor, Nunc dimittis, hino, oração e Salve Rainha.</p>
+</div>
+
+<div class="chapter">
+  <h4><a href="oracoes-confissao.html" style="text-decoration: none; color: inherit;">Orações para a Confissão</a></h4>
+  <p>Exame de consciência detalhado, ato de contrição, Salmo 50 (Miserere).</p>
+</div>
+
+<div class="chapter">
+  <h4><a href="como-rezar-terco.html" style="text-decoration: none; color: inherit;">Como rezar o Terço e o Rosário</a></h4>
+  <p>Método completo com os mistérios gozosos, dolorosos e gloriosos, ladainha final e orações.</p>
+</div>
+
 <p class="center" style="font-size:0.9rem; color:#5f4a34; margin-top:2rem;">— Fim do Catecismo Maior de São Pio X —</p>
 </section>
 
 </div>
 
+<!-- BOTÃO VOLTAR AO TOPO -->
+<button id="backToTop" title="Voltar ao topo">
+  ↑
+</button>
+
 <script>
+  // ===== TEMA CLARO/ESCURO =====
   const toggleBtn = document.getElementById('toggleTheme');
   const body = document.body;
 
@@ -2127,6 +2263,186 @@
       this.textContent = '🌙';
     }
   });
+
+// ===== SISTEMA DE PESQUISA =====
+const searchInput = document.getElementById('searchInput');
+const book = document.getElementById('book');
+
+// Criar elemento para mensagem de nenhum resultado
+const noResults = document.createElement('div');
+noResults.id = 'noResults';
+noResults.innerHTML = '<p>🔍 Nenhum resultado encontrado para "<span id="searchTerm"></span>"</p>';
+noResults.style.display = 'none';
+book.appendChild(noResults);
+
+// Função para limpar highlights anteriores
+function clearHighlights() {
+  document.querySelectorAll('.search-highlight').forEach(el => {
+    const parent = el.parentNode;
+    const text = el.textContent;
+    const textNode = document.createTextNode(text);
+    parent.replaceChild(textNode, el);
+    parent.normalize();
+  });
+}
+
+// Função principal de pesquisa
+function performSearch() {
+  const term = searchInput.value.trim().toLowerCase();
+  document.getElementById('searchTerm').textContent = term;
+
+  // Se a busca estiver vazia, resetar
+  if (term === '') {
+    resetSearch();
+    return;
+  }
+
+  // Limpar highlights anteriores
+  clearHighlights();
+
+  // Selecionar todos os elementos que contêm texto pesquisável
+  const elements = document.querySelectorAll('.qa, .prayer-card, .chapter, .section, p, li, .prayer, h3, h4, .prayer-content, .prayer-latin, .prayer-portuguese');
+  let found = 0;
+  let firstMatch = null;
+
+  elements.forEach(el => {
+    // Verificar se o elemento tem texto
+    const text = el.textContent.toLowerCase();
+    const match = text.includes(term);
+
+    if (match) {
+      el.classList.remove('search-hidden');
+      found++;
+      
+      // Destacar o termo no elemento
+      highlightText(el, term);
+      
+      // Guardar o primeiro elemento encontrado para scroll
+      if (!firstMatch) {
+        firstMatch = el;
+      }
+    } else {
+      el.classList.add('search-hidden');
+    }
+  });
+
+  // Mostrar/esconder mensagem de nenhum resultado
+  if (found === 0) {
+    noResults.style.display = 'block';
+  } else {
+    noResults.style.display = 'none';
+    // Scroll para o primeiro resultado
+    if (firstMatch) {
+      firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+}
+
+// Função para destacar o termo em um elemento
+function highlightText(el, term) {
+  // Percorrer apenas os nós de texto diretos do elemento
+  const walker = document.createTreeWalker(
+    el,
+    NodeFilter.SHOW_TEXT,
+    {
+      acceptNode: function(node) {
+        // Ignorar nós que já estão dentro de um highlight
+        if (node.parentElement.classList.contains('search-highlight')) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        // Ignorar nós vazios ou com apenas espaços
+        if (!node.textContent.trim()) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    }
+  );
+
+  const textNodes = [];
+  let node;
+  while (node = walker.nextNode()) {
+    textNodes.push(node);
+  }
+
+  // Processar cada nó de texto
+  textNodes.forEach(node => {
+    const text = node.textContent;
+    const lowerText = text.toLowerCase();
+    let index = lowerText.indexOf(term);
+    
+    if (index !== -1) {
+      const fragment = document.createDocumentFragment();
+      let lastIndex = 0;
+      
+      while (index !== -1) {
+        // Texto antes do termo
+        if (index > lastIndex) {
+          fragment.appendChild(document.createTextNode(text.substring(lastIndex, index)));
+        }
+        
+        // O termo destacado
+        const highlight = document.createElement('span');
+        highlight.className = 'search-highlight';
+        highlight.textContent = text.substring(index, index + term.length);
+        fragment.appendChild(highlight);
+        
+        lastIndex = index + term.length;
+        index = lowerText.indexOf(term, lastIndex);
+      }
+      
+      // Texto após o último termo
+      if (lastIndex < text.length) {
+        fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+      }
+      
+      // Substituir o nó original pelo fragmento
+      node.parentNode.replaceChild(fragment, node);
+    }
+  });
+}
+
+// Função para resetar a pesquisa
+function resetSearch() {
+  // Limpar highlights
+  clearHighlights();
+  
+  // Mostrar todos os elementos
+  document.querySelectorAll('.qa, .prayer-card, .chapter, .section, p, li, .prayer, h3, h4, .prayer-content, .prayer-latin, .prayer-portuguese').forEach(el => {
+    el.classList.remove('search-hidden');
+  });
+  
+  // Esconder mensagem de nenhum resultado
+  noResults.style.display = 'none';
+}
+
+// Event listeners
+searchInput.addEventListener('input', performSearch);
+searchInput.addEventListener('search', function() {
+  if (this.value === '') {
+    resetSearch();
+  }
+});
+
+// ===== BOTÃO VOLTAR AO TOPO =====
+const backToTopBtn = document.getElementById('backToTop');
+
+// Mostrar/esconder o botão conforme a rolagem
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 300) {
+    backToTopBtn.classList.add('show');
+  } else {
+    backToTopBtn.classList.remove('show');
+  }
+});
+
+// Voltar ao topo com animação suave
+backToTopBtn.addEventListener('click', function() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
 </script>
 
 </body>
